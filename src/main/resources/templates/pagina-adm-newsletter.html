@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Mensagens</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .custom-navbar {
+          background-color: white; 
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-light .navbar-nav .nav-link {
+            color: #8B4513 !important; 
+        }
+        .navbar-light .navbar-brand {
+            color: #8B4513 !important;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+        }
+        h1, h2 {
+            color: #333;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .message-table {
+            width: 100%;
+            max-width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        .message-table th, .message-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        .message-table th {
+            background-color: #009440;
+            color: white;
+        }
+        .message-table td {
+            background-color: #fff;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light custom-navbar" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" style="height: 60px; width: auto; margin-right: 10px;">
+                Administração
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a th:href="@{/admin}" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a th:href="@{/admin-item}" class="nav-link">Gerenciar Produtos</a></li>
+                    <li class="nav-item active"><a th:href="@{/dashboard}" class="nav-link">Visualizar Mensagens</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo da Página -->
+    <div class="container mt-5">
+        <h1>Mensagens Recebidas</h1>
+
+        <!-- Tabela de Mensagens -->
+        <table class="table message-table mx-auto text-center">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>Assunto</th>
+                    <th>Mensagem</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterate over the list of messages -->
+                <tr th:each="message : ${messages}">
+                    <td th:text="${message.name}">Nome do Usuário</td>
+                    <td th:text="${message.phone}">(XX) XXXXX-XXXX</td>
+                    <td th:text="${message.email}">email@example.com</td>
+                    <td th:text="${message.subject}">Assunto</td>
+                    <td th:text="${message.message}">Mensagem do Usuário</td>
+                </tr>
+            </tbody>
+        </table>        
+        
+        <h2>Emails Cadastrados na Newsletter</h2>
+
+        <!-- Tabela de E-mails da Newsletter -->
+        <table class="table message-table mx-auto text-center">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="newsletter : ${newsletters}">
+                    <td th:text="${newsletter.email}">email@example.com</td>
+                </tr>
+                <!-- Adicione mais e-mails conforme necessário -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,67 @@
+package com.prod.ib3.security.jwt;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.JwsHeader;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.SigningKeyResolver;
+import io.jsonwebtoken.SigningKeyResolverAdapter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.security.Key;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.util.StringUtils;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+public class JwtRequestFilter extends OncePerRequestFilter {
+
+    private final String jwtSecret;
+
+    public JwtRequestFilter(AuthenticationManager authenticationManager, @Value("${jwt.secret}") String jwtSecret) {
+        super();
+        this.jwtSecret = jwtSecret;
+    }
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
+        String authorizationHeader = request.getHeader("Authorization");
+
+        if (StringUtils.hasText(authorizationHeader) && authorizationHeader.startsWith("Bearer ")) {
+            String jwt = authorizationHeader.substring(7);
+
+            try {
+                 Key signingKey = new SecretKeySpec(jwtSecret.getBytes(), SignatureAlgorithm.HS256.getJcaName());
+
+                String username = Jwts.parserBuilder()
+                        .setSigningKey(signingKey)
+                        .build()
+                        .parseClaimsJws(jwt)
+                        .getBody()
+                        .getSubject();
+
+
+                if (StringUtils.hasText(username)) {
+                    Authentication authentication = new UsernamePasswordAuthenticationToken(username, null, null);
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                }
+            } catch (ExpiredJwtException e) {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            }
+        }
+
+        chain.doFilter(request, response);
+    }
+}

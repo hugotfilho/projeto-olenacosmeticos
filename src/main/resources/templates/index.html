@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title th:text="${title ?: 'Página-inicial'}">Página-inicial</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Google Fonts -->
+    <link th:href="@{https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap}" rel="stylesheet">
+    <link th:href="@{https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap}" rel="stylesheet">
+    <link th:href="@{https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap}" rel="stylesheet">
+    <link th:href="@{https://fonts.googleapis.com/css?family=Nova+Square&display=swap}" rel="stylesheet">
+
+    <!-- CSS Stylesheets -->
+    <link th:href="@{/css/open-iconic-bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/css/owl.carousel.min.css}" rel="stylesheet">
+    <link th:href="@{/css/owl.theme.default.min.css}" rel="stylesheet">
+    <link th:href="@{/css/magnific-popup.css}" rel="stylesheet">
+    <link th:href="@{/css/aos.css}" rel="stylesheet">
+    <link th:href="@{/css/ionicons.min.css}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap-datepicker.css}" rel="stylesheet">
+    <link th:href="@{/css/jquery.timepicker.css}" rel="stylesheet">
+    <link th:href="@{/css/flaticon.css}" rel="stylesheet">
+    <link th:href="@{/css/icomoon.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css}" rel="stylesheet">
+  </head>
+	<style>
+    
+    body, p, span, a, li, .icon {
+      color: #8B4513 !important; 
+    }
+
+   
+    a {
+      color: #8B4513 !important; 
+    }
+
+    .footer-text, .footer-icon, .newsletter-text, .subscribe-form input[type="submit"] {
+            color: #8B4513 !important; 
+        }
+        .subscribe-form input[type="submit"] {
+            background-color: #8B4513 !important;
+            border: none;
+        }
+        .subscribe-form input[type="submit"]:hover {
+            background-color: #A0522D !important; 
+        }
+        .ftco-footer-widget h2 {
+            color: #8B4513 !important;
+        }
+        .ftco-footer-social .icon, .subscribe-form .icon {
+            color: #8B4513 !important;
+        }
+
+        .subscribe-form h2 {
+      color: #8B4513 !important; 
+        }
+
+        .ftco-section .subscribe-form h2,
+      .ftco-section h2 {
+        color: #8B4513 !important; 
+      }
+
+    
+    .ftco-animate .media-body h3,
+    .ftco-animated .media-body h3 {
+      color: #8B4513 !important; 
+    }
+
+    .py-1.bg-primary {
+      background-color: #FFEE8C !important; 
+      color: #8B4513; 
+    }
+
+    .py-1.bg-primary .icon,
+    .py-1.bg-primary .text {
+      color: #8B4513 !important; 
+    }
+
+    .col-md-12 ftco-animate text-center h1{
+      font-family:Poppins;
+    }
+      
+
+    .text-image {
+      font-size: 15vw;
+      font-weight: bold;
+      background-image: url('https://portalfonteboa.com.br/wp-content/uploads/2024/09/turismo-ecologico-no-Brasil-750x400.jpg'); 
+      background-size: cover;
+      background-position: center;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-align: center;
+    }
+
+    .section-content {
+      padding: 20px;
+      text-align: left;
+      margin-bottom: 100px;
+    }
+
+    .section-content h2 {
+      font-weight: bold;
+      color: #009440; 
+    }
+
+    .section-content p {
+      font-size: 1.2rem;
+      color: #666;
+      max-width: 500px;
+    }
+
+    .btn-custom {
+      border-radius: 30px;
+      padding: 10px 20px;
+      margin-right: 10px;
+    }
+
+    .btn-green {
+      background-color: #009440;
+      color: white !important; 
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid #009440;
+      color: #8B4513 !important; 
+    }
+
+    .custom-navbar {
+      background-color: #FFEE8C; 
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+      color: #8B4513 !important; 
+    }
+
+    .top-header {
+      background-color: #FFEE8C;
+      color: #8B4513;
+    }
+
+    .top-header .icon,
+    .top-header .text {
+      color: #8B4513 !important;
+    }
+
+    .custom-navbar {
+      background-color: #FFFFFF; 
+    }
+
+    .navbar-light .navbar-brand {
+      color: #8B4513 !important;
+    }
+
+    .bg-color-1, .bg-color-2, .bg-color-3, .bg-color-4 {
+      background-color: #FFA500 !important;
+    }
+
+    .btn-primary {
+      background-color: #009440 !important; 
+      border-color: #009440 !important; 
+      color: white !important; 
+    }
+
+    .home-slider .slider-item h1,
+    .home-slider .slider-item h2 {
+      color: white !important; 
+    }
+
+    .mouse-wheel {
+      background-color: #009440 !important;
+      color: white !important; 
+    }
+
+    .mouse-icon {
+      background-color: #009440;
+      color: white !important; 
+    }
+
+    .product-section {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+      background-color: #f9f9f9;
+      flex-wrap: wrap;
+    }
+
+    .product-card {
+      width: 100%;
+      max-width: 300px;
+      margin: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-image {
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.1);
+    }
+
+    .product-description {
+      padding: 10px;
+      color: #555;
+    }
+
+    .saiba-mais-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #008080;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .saiba-mais-btn:hover {
+      background-color: #006666;
+    }
+
+    .subscribe-form h2 {
+      color: #8B4513 !important; 
+    }
+
+    .ftco-footer .ftco-heading-2 {
+      color: #8B4513 !important;
+    }
+
+    @media (max-width: 768px) {
+      .product-section {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+      .product-card {
+        width: 90%;
+        max-width: 400px;
+      }
+
+      .heading-section.text-center h2 {
+        color: #8B4513 !important;
+      }
+
+
+
+      .mouse-icon .ion-ios-arrow-up,
+      .mouse-wheel .ion-ios-arrow-up {
+        color: white !important; 
+      }
+
+      .subscribe-form .submit.px-3,
+        input[type="submit"].submit.px-3 {
+        background-color: #009440 !important; 
+        color: white !important; }
+      
+
+          /* Aumentar as bolinhas */
+      .ftco-services .icon {
+        width: 120px; 
+        height: 120px; 
+        font-size: 50px; 
+        border-radius: 50%; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  } 
+
+
+      .ftco-services .col-md-3 {
+        padding: 5px; 
+  }
+
+
+      .ftco-services .media-body {
+        margin-top: 10px; 
+  }
+
+
+      .ftco-services .media {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+  }   
+
+    .ftco-services .icon {
+      width: 120px !important;
+      height: 120px !important;
+      font-size: 50px !important;
+  }
+
+  .subheading {
+    font-family: 'Poppins', sans-serif !important; 
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+.btn-custom {
+  background-color: #009440; 
+  color: white !important; 
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #007d36; 
+  transform: translateY(-2px); 
+}
+
+
+
+
+     
+    
+
+
+        
+  </style>
+  <body class="goto-here">
+    <!-- Parte superior com o email e o número -->
+    <div class="py-1 top-header">
+      <div class="container">
+        <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+          <div class="col-lg-12 d-block">
+            <div class="row d-flex">
+              <div class="col-md pr-4 d-flex topper align-items-center">
+                <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="fas fa-phone icon"></span></div>
+                <span class="text">+55 75 9171-2812</span>
+              </div>
+              <div class="col-md pr-4 d-flex topper align-items-center">
+                <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="fa fa-envelope icon"></span></div>
+                <span class="text">olenacosmeticos@gmail.com</span>
+              </div>
+              <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+                <span class="text">Venha ser bela e feliz!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navbar com fundo branco -->
+    <nav class="navbar navbar-expand-lg navbar-light custom-navbar" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/logo.png" style="height: 60px; width: auto; margin-right: 10px;">
+          Olena Cosméticos
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a th:href="@{/}" class="nav-link">Início</a></li>
+            <li class="nav-item"><a th:href="@{/catalogo}" class="nav-link">Produtos</a></li>
+            <li class="nav-item"><a th:href="@{/sobre}" class="nav-link">Sobre</a></li>
+            <li class="nav-item"><a th:href="@{/contato}" class="nav-link">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+		
+    <!-- END nav -->
+
+    <section id="home-section" class="hero">
+		  <div class="home-slider owl-carousel">
+	      <div class="slider-item" style="background-image: url(https://images.pexels.com/photos/6634652/pexels-photo-6634652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+	            <div class="col-md-12 ftco-animate text-center">
+	              <h1 class="mb-2">A nossa beleza é você!</h1>
+	              <h2 class="subheading mb-4">Produtos 100% naturais</h2>
+	              <p><a th:href="@{/catalogo}" class="btn btn-primary">Catálogo</a></p>
+	            </div>
+
+	          </div>
+	        </div>
+	      </div>
+
+	      <div class="slider-item" style="background-image: url(https://images.pexels.com/photos/1045113/pexels-photo-1045113.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+	            <div class="col-sm-12 ftco-animate text-center">
+	              <h1 class="mb-2">Sua beleza é única!</h1>
+	              <h2 class="subheading mb-4">Venha ser feliz com Olena Cosméticos!</h2>
+	              <p><a th:href="@{/sobre}" class="btn btn-primary">Saiba mais</a></p>
+	            </div>
+
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+    </section>
+
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row no-gutters ftco-services">
+          <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services mb-md-0 mb-4">
+              <div class="icon bg-color-1 active d-flex justify-content-center align-items-center mb-2">
+                <span class="flaticon-shipped"></span>
+              </div>
+              <div class="media-body">
+                <h3 class="heading">Entrega rápida e segura</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services mb-md-0 mb-4">
+              <div class="icon bg-color-2 d-flex justify-content-center align-items-center mb-2">
+                <span class="flaticon-diet"></span>
+              </div>
+              <div class="media-body">
+                <h3 class="heading">Ingredientes Brasileiros</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services mb-md-0 mb-4">
+              <div class="icon bg-color-3 d-flex justify-content-center align-items-center mb-2">
+                <span class="flaticon-award"></span>
+              </div>
+              <div class="media-body">
+                <h3 class="heading">Qualidade Superior</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services mb-md-0 mb-4">
+              <div class="icon bg-color-4 d-flex justify-content-center align-items-center mb-2">
+                <span class="flaticon-customer-service"></span>
+              </div>
+              <div class="media-body">
+                <h3 class="heading">Suporte</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+		
+<section id="naturais" class="container my-5">
+  <!-- Palavra com imagem de fundo nas letras -->
+  <div class="borda_naturais">
+    <div class="text-center">
+      <h1 class="text-image">Naturais</h1>
+    </div>
+  
+  <!-- Slogan e descrição -->
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-4 section-content">
+        <h2>Lutando pela natureza brasileira</h2>
+      </div>
+      <div class="col-md-5 section-content">
+        <p>Beleza sustentável e consciente: nossos cosméticos naturais combinam ingredientes puros e inovação para cuidar de você e do planeta.</p>
+      <!-- Botões -->
+        <a th:href="@{/sobre}" class="btn btn-custom btn-green">Sobre nós</a>
+        <a th:href="@{/sobre}" class="btn btn-custom btn-outline">Aprenda mais</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center mb-3 pb-3">
+      <div class="col-md-12 heading-section text-center ftco-animate fadeInUp ftco-animated">
+        <span class="subheading">Confira nossos</span>
+        <h2 class="mb-4">Produtos</h2>
+        <p>Explore a pureza da natureza com nossa linha de cosméticos naturais, cuidadosamente desenvolvidos para cuidar de você e de seus amigos de quatro patas. Ingredientes sustentáveis, segurança e eficácia para todos os membros da sua família, sejam eles humanos ou peludos.</p>
+        <a th:href="@{/catalogo}" class="btn btn-custom btn-green">Beleza</a>
+        <a th:href="@{/catalogo}" class="btn btn-custom btn-outline">4Patas</a>
+      </div>
+    </div>   		
+  </div>
+  
+
+		<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+      <div class="container py-4">
+        <div class="row d-flex justify-content-center py-5">
+          <div class="col-md-6">
+              <h2 style="font-size: 22px;" class="mb-0">Inscreva-se em nossa newsletter</h2>
+              <span>Saiba de novos produtos e promoções</span>
+          </div>
+          <div class="col-md-6 d-flex align-items-center">
+              <form action="/newsletter/subscribe" method="post" class="subscribe-form">
+                  <div class="form-group d-flex">
+                      <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email" required>
+                      <button type="submit" class="submit px-3">Inscreva-se</button>
+                  </div>
+              </form>
+              <p th:if="${message}" th:text="${message}" id="newsletter-message" class="mt-2"></p>
+          </div>
+      </div>
+      
+      
+      </div>
+    </section>
+    <footer class="ftco-footer ftco-section">
+      <div class="container">
+        <div class="row">
+          <div class="mouse">
+            <a href="#" class="mouse-icon">
+              <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+            </a>
+          </div>
+        </div>
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Olena cosméticos</h2>
+              <p>Olena Cosméticos produz cosméticos naturais com matérias-primas sustentáveis dos biomas brasileiros.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-whatsapp"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Menu</h2>
+              <ul class="list-unstyled">
+                <li><a th:href="@{/catalogo}" class="py-2 d-block">Catálogo</a></li>
+                <li><a th:href="@{/sobre}" class="py-2 d-block">Sobre</a></li>
+                <li><a th:href="@{/contato}" class="py-2 d-block">Contato</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Ajuda</h2>
+              <div class="d-flex">
+                <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
+                  <li><a href="#" class="py-2 d-block">Contato</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Dúvidas?</h2>
+              <div class="block-23 mb-3">
+                <ul>
+                  <li><a href="#"><span class="icon icon-phone"></span><span class="text">+55 75 9171-2812</span></a></li>
+                  <li><a href="#"><span class="icon icon-envelope"></span><span class="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;olenacosmeticos@gmail.com</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Adiciona o botão de acesso à página de admin -->
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <a th:href="@{/admin-senha}" class="btn btn-primary" style="background-color: #8B4513; color: white; border: none; padding: 10px 20px; border-radius: 5px; text-decoration: none;">Acessar Página de Admin</a>
+            <p class="mt-3">
+              Copyright &copy;<script>document.write(new Date().getFullYear());</script> Olena cosméticos
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>

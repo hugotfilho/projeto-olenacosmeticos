@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+	<head>
+  <title>Vegefoods - Sabonete Natural</title>
+  <meta charset="utf-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+	
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<link rel="stylesheet" href="css/aos.css">
+
+	<link rel="stylesheet" href="css/ionicons.min.css">
+	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="css/jquery.timepicker.css">
+
+	
+	<link rel="stylesheet" href="css/flaticon.css">
+	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Nova+Square&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<style>
+		.product-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+	
+}
+
+.buy-button-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: start;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff !important; /* Letra branca */
+  background-color:#009440;
+  border-radius: 5px;
+  text-decoration: none;
+  width: 100%; /* Ocupa a largura do texto */
+  max-width: 300px; /* Limita o tamanho máximo do botão */
+  transition: background-color 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1ebe57;
+}
+
+.icon-whatsapp {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+.body, p, span, a, li, .icon {
+      color: #8B4513 !important; /* Marrom */
+    }
+			.py-1.bg-primary {
+      background-color: #FFEE8C !important; 
+      color: #8B4513; 
+    }
+
+    .py-1.bg-primary .icon,
+    .py-1.bg-primary .text {
+      color: #8B4513 !important; 
+    }
+
+		.custom-navbar {
+      background-color: #FFEE8C; 
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+      color: #8B4513 !important; 
+    }
+
+    .top-header {
+      background-color: #FFEE8C;
+      color: #8B4513;
+    }
+
+    .top-header .icon,
+    .top-header .text {
+      color: #8B4513 !important;
+    }
+
+    .custom-navbar {
+      background-color: #FFFFFF; 
+    }
+
+    .navbar-light .navbar-brand {
+      color: #8B4513 !important;
+    }
+
+    .bg-color-1, .bg-color-2, .bg-color-3, .bg-color-4 {
+      background-color: #FFA500 !important;
+    }
+
+		.ftco-section .subscribe-form h2,
+      .ftco-section h2 {
+        color: #8B4513 !important; /* Marrom */
+      }
+
+		.mouse-wheel {
+      background-color: #009440 !important;
+      color: white !important; /* Branco */
+    }
+
+    .mouse-icon {
+      background-color: #009440;
+      color: white !important; /* Branco */
+    }
+
+		.mouse-icon .ion-ios-arrow-up,
+      .mouse-wheel .ion-ios-arrow-up {
+        color: white !important; /* Branco */
+      }
+
+      .subscribe-form .submit.px-3,
+        input[type="submit"].submit.px-3 {
+        background-color: #009440 !important; /* Verde bandeira */
+        color: white !important; /* Texto branco */}
+
+		
+		
+
+	</style>
+</head>
+<body class="goto-here">
+
+  <!-- HEADER DA PÁGINA INDEX -->
+  <div class="py-1 top-header">
+		<div class="container">
+			<div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+				<div class="col-lg-12 d-block">
+					<div class="row d-flex">
+						<div class="col-md pr-4 d-flex topper align-items-center">
+							<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="fas fa-phone icon"></span></div>
+							<span class="text">+55 75 9171-2812</span>
+						</div>
+						<div class="col-md pr-4 d-flex topper align-items-center">
+							<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="fa fa-envelope icon"></span></div>
+							<span class="text">olenacosmeticos@gmail.com</span>
+						</div>
+						<div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+							<span class="text">Venha ser bela e feliz!</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Navbar com fundo branco -->
+	<nav class="navbar navbar-expand-lg navbar-light custom-navbar" id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="index.html">
+				<img src="images/logo.png" style="height: 60px; width: auto; margin-right: 10px;">
+				Olena Cosméticos
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a th:href="@{/}" class="nav-link">Início</a></li>
+					<li class="nav-item"><a th:href="@{/catalogo}" class="nav-link">Produtos</a></li>
+					<li class="nav-item"><a th:href="@{/sobre}" class="nav-link">Sobre</a></li>
+					<li class="nav-item"><a th:href="@{/contato}" class="nav-link">Contato</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	
+	<!-- END nav -->
+
+  <!-- END HEADER DA PÁGINA INDEX -->
+
+  <!-- Banner da página de produto -->
+
+  <!-- Seção de Produto - Sabonete Natural -->
+  <section class="ftco-section" style="background-color: white;">
+		<div class="container">
+			<div class="row">
+				<!-- Imagem do produto -->
+				<div class="col-lg-6 mb-5 ftco-animate">
+					<a href="images/sabonete-oli.jpg" class="image-popup">
+						<img src="images/sabonete-oli.jpg" style="border-radius:25px;"class="img-fluid w-100" alt="Sabonete Caati">
+					</a>
+				</div>
+				<!-- Detalhes do produto -->
+				<div class="col-lg-6 product-details pl-md-5 ftco-animate">
+					<h3 class="product-title" style="color:#8B4513">Sabonete Caati</h3>
+					<p>Sabonete Caati, 100% feito de óleo de licuri, com ingredientes botânicos que limpam e hidratam, deixando a pele macia e revigorada. Ideal para um banho saudável e sustentável, com fragrância leve e refrescante.</p>
+					<!-- Botão do WhatsApp -->
+					<div class="buy-button-container">
+						<a href="https://wa.me/5575991712812" target="_blank" class="btn-whatsapp">
+							<i class="fab fa-whatsapp icon-whatsapp"></i> Comprar
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  <!-- NEWSLETTER DA PÁGINA INDEX -->
+  <section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+    <div class="container py-4">
+      <div class="row d-flex justify-content-center py-5">
+        <div class="col-md-6">
+          <h2 style="font-size: 22px;" class="mb-0">Inscreva-se em nossa newsletter</h2>
+          <span>Saiba de novos produtos e promoções</span>
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+          <form action="#" class="subscribe-form">
+            <div class="form-group d-flex">
+              <input type="text" class="form-control" placeholder="Digite seu email">
+              <input type="submit" value="Inscreva-se" class="submit px-3">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END NEWSLETTER DA PÁGINA INDEX -->
+	<footer class="ftco-footer ftco-section">
+		<div class="container">
+			<div class="row">
+				<div class="mouse">
+					<a href="#" class="mouse-icon">
+						<div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+					</a>
+				</div>
+			</div>
+			<div class="row mb-5">
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Olena cosméticos</h2>
+						<p>Olena Cosméticos produz cosméticos naturais com matérias-primas sustentáveis dos biomas brasileiros.</p>
+						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+							<li class="ftco-animate"><a href="#"><span class="icon-whatsapp"></i></a></li>
+							<li class="ftco-animate"><a href=""><span class="icon-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4 ml-md-5">
+						<h2 class="ftco-heading-2">Menu</h2>
+						<ul class="list-unstyled">
+							<li><a href="#" class="py-2 d-block">Catálogo</a></li>
+							<li><a href="#" class="py-2 d-block">Sobre</a></li>
+							<li><a href="#" class="py-2 d-block">Contato</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-4">
+					 <div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Ajuda</h2>
+						<div class="d-flex">
+							<ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
+								<li><a href="#" class="py-2 d-block">Contato</a></li>
+					
+							 
+							</ul>
+						 
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Dúvidas?</h2>
+						<div class="block-23 mb-3">
+							<ul>
+								<li><a href="#"><span class="icon icon-phone"></span><span class="text">+55 75 9171-2812</span></a></li>
+								<li><a href="#"><span class="icon icon-envelope"></span><span class="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;olenacosmeticos@gmail.com</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+
+					<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;<script>document.write(new Date().getFullYear());</script> Olena cosméticos</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	
+
+
+
+  
+
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/>
+    </svg>
+  </div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
