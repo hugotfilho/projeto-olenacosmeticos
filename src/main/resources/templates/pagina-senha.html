@@ -108,20 +108,34 @@ body {
     
 </head>
 <body>
-  <div class="page">
-    <form method="POST" class="formLogin" onsubmit="redirectToAdmin(event)">
-        <h1>Login</h1>
-        <p>Digite a senha de acesso à página de administração:</p>
-        <label for="password">Senha</label>
-        <input type="password" id="password" placeholder="Digite sua senha" required />
-        <input type="submit" value="Acessar" class="btn" />
-    </form>
-</div>
+    <div class="page">
+        <form method="POST" class="formLogin" onsubmit="checkPassword(event)">
+            <h1>Login</h1>
+            <p>Digite a senha de acesso à página de administração:</p>
+            <label for="password">Senha</label>
+            <input type="password" id="password" placeholder="Digite sua senha" required />
+            <input type="submit" value="Acessar" class="btn" />
+            <p id="error-message" style="color: red; display: none;">Senha incorreta. Tente novamente.</p>
+        </form>
+    </div>
+    
     <script>
-      function redirectToAdmin(event) {
-            event.preventDefault(); 
-            window.location.href = 'admin'; 
+        function checkPassword(event) {
+            event.preventDefault(); // Prevent default form submission
+    
+            const correctPassword = 'olenacosmeticos123*'; // Replace with the correct password
+            const inputPassword = document.getElementById('password').value;
+    
+            if (inputPassword === correctPassword) {
+                // If the password is correct, redirect to the admin page
+                window.location.href = 'admin';
+            } else {
+                // If the password is incorrect, show an error message
+                const errorMessage = document.getElementById('error-message');
+                errorMessage.style.display = 'block';
+            }
         }
     </script>
+    
 </body>
 </html>
