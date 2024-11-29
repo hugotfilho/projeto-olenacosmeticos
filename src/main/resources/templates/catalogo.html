@@ -323,7 +323,7 @@
     <nav class="navbar navbar-expand-lg navbar-light custom-navbar" id="ftco-navbar">
       <div class="container">
         <a class="navbar-brand" th:href="@{/}">
-          <img src="images/logo.png" style="height: 60px; width: auto; margin-right: 10px;">
+          <img th:src="@{/images/logo.png}" style="height: 60px; width: auto; margin-right: 10px;">
           Olena Cosméticos
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -383,20 +383,25 @@
                 th:each="item : ${items}">
                 <div class="pricing-box mt-4">
                     <!-- Display product image -->
-                    <img th:src="@{'/images/' + ${item.imageName}}" alt="Produto" class="product-image">
-                    
+                    <img th:src="'data:image/png;base64,' + ${item.imageBase64}" 
+                    alt="Imagem do Item" 
+                    style="max-width: 60px;">                    
                     <!-- Display product name -->
                     <h4 class="f-20" th:text="${item.name}">Nome do Produto</h4>
                     
                     <!-- Display product description -->
-                    <p class="text-muted" th:text="${item.description}">
-                        Descrição do Produto
-                    </p>
+                    <p class="text-muted" th:text="${item.description}">Descrição do Produto</p>
+                    <div class="buy-button-container">
+                      <a href="https://wa.me/5575991712812" target="_blank" class="btn-whatsapp">
+                        <i class="fab fa-whatsapp icon-whatsapp"></i> Comprar
+                      </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 
 	<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
 		<div class="container py-4">

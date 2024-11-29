@@ -46,11 +46,6 @@ public class AllController {
         return "index";
     }
 
-    @GetMapping("/catalogo")
-    public String showCatalog() {
-        return "catalogo"; // The name of the Thymeleaf template (catalogo.html)
-    }
-
     @GetMapping("/sobre")
     public String showAbout() {
         return "sobre"; // The name of the Thymeleaf template (catalogo.html)
@@ -205,11 +200,24 @@ public class AllController {
         return "newsletter-list";
     }
 
-    @GetMapping("/catalog")
+    @GetMapping("/catalogo")
     public String getCatalog(Model model) {
-        List<Item> items = allService.getAllItems(); // Fetch all items from the database
-        model.addAttribute("items", items);
-        return "catalog"; // Corresponds to catalog.html
+        List<Item> items = allService.getAllItems();
+
+        // Convert images to Base64 strings and prepare data for the template
+        List<Map<String, Object>> itemsWithImages = items.stream().map(item -> {
+            Map<String, Object> map = new HashMap<>();
+            map.put("id", item.getId());
+            map.put("name", item.getName());
+            map.put("category", item.getCategory());
+            map.put("description", item.getDescription());
+            map.put("pricing", item.getPricing());
+            map.put("imageBase64", Base64.getEncoder().encodeToString(item.getImage()));
+            return map;
+        }).toList();
+
+        model.addAttribute("items", itemsWithImages);
+        return "catalogo"; 
     }
 
     @GetMapping("/messages")
