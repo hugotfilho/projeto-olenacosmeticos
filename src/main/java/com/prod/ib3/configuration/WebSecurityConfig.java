@@ -19,7 +19,7 @@ public class WebSecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails admin = User.withUsername("admin")
-            .password(passwordEncoder().encode("teste123"))
+            .password(passwordEncoder().encode("olenacosmeticos2025*"))
             .roles("ADMIN")
             .build();
         return new InMemoryUserDetailsManager(admin);

@@ -41,7 +41,7 @@ public class AllController {
     @Autowired
     AllService allService;
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public String homePage() {
         return "index";
     }
