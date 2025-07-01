@@ -66,7 +66,7 @@ public class AllController {
         return "pagina-adm-newsletter"; // The name of the Thymeleaf template (catalogo.html)
     }
 
-    @GetMapping("/admin-senha")
+    @GetMapping("/admin-senha")    
     public String showPassword() {
         return "pagina-senha"; // The name of the Thymeleaf template (catalogo.html)
     }
