@@ -19,9 +19,9 @@ public class WebSecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails admin = User.withUsername("admin")
-            .password(passwordEncoder().encode("olenacosmeticos2025*"))
-            .roles("ADMIN")
-            .build();
+                .password(passwordEncoder().encode("olenacosmeticos2025*"))
+                .roles("ADMIN")
+                .build();
         return new InMemoryUserDetailsManager(admin);
     }
 
@@ -33,27 +33,38 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests((authz) -> authz
-                .requestMatchers("/admin").hasRole("ADMIN")
-                .requestMatchers("/admin-newsletter").hasRole("ADMIN")
-                .requestMatchers("/items").hasRole("ADMIN")
-                .requestMatchers("/items/add").hasRole("ADMIN")
-                .requestMatchers("/remove/{id}").hasRole("ADMIN")
-                .requestMatchers("/dashboard").hasRole("ADMIN")
-                .anyRequest().permitAll()
-            )
-            .formLogin((form) -> form
-                .loginPage("/admin-senha")  // Página de login customizada
-                .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/admin", true) // Redireciona para /admin após login
-                .failureUrl("/admin-senha?error=true") // Redireciona para /admin-senha com erro se falhar
-                .permitAll()
-            )
-            .logout((logout) -> logout
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/") // Redireciona para / após logout
-                .permitAll()
-            );
+                .authorizeHttpRequests((authz) -> authz
+                        .requestMatchers(
+                                "/admin",
+                                "/admin-newsletter",
+                                "/items",
+                                "/items/add",
+                                "/remove/**",
+                                "/dashboard",
+                                "/view-newsletters",
+                                "/messages"
+                        ).hasRole("ADMIN")
+                        .requestMatchers(
+                                "/home", "/sobre", "/contato", "/catalogo",
+                                "/newsletter/subscribe", "/newsletter/send",
+                                "/messages/add", "/all", "/{id}"
+                        ).permitAll()
+                        .anyRequest().permitAll()
+                )
+                .formLogin((form) -> form
+                        .loginPage("/admin-senha") // Página personalizada de login
+                        .loginProcessingUrl("/login") // URL que processa o POST do login
+                        .defaultSuccessUrl("/admin", true) // Redirecionamento após login
+                        .failureUrl("/admin-senha?error=true")
+                        .permitAll()
+                )
+                .logout((logout) -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
+                        .permitAll()
+                )
+                .csrf(csrf -> csrf.disable()); // Temporariamente desativado para evitar 403 nos POST públicos
+
         return http.build();
     }
 }

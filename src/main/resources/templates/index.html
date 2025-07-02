@@ -504,13 +504,14 @@
               <span>Saiba de novos produtos e promoções</span>
           </div>
           <div class="col-md-6 d-flex align-items-center">
-              <form action="/newsletter/subscribe" method="post" class="subscribe-form">
-                  <div class="form-group d-flex">
-                      <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email" required>
-                      <button type="submit" class="submit px-3">Inscreva-se</button>
-                  </div>
-              </form>
-              <p th:if="${message}" th:text="${message}" id="newsletter-message" class="mt-2"></p>
+            <form action="/newsletter/subscribe" method="post" class="subscribe-form">
+              <input type="hidden" name="redirectPage" value="sobre" />
+              <div class="form-group d-flex">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email" required>
+                <button type="submit" class="submit px-3">Inscreva-se</button>
+              </div>
+            </form>
+            <p th:if="${message}" th:text="${message}" id="newsletter-message" class="mt-2"></p>
           </div>
       </div>
       

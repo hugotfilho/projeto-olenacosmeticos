@@ -379,7 +379,7 @@
             <!-- Iterate over the items list dynamically -->
             <div
                 class="col-lg-4 col-md-6 product-item"
-                th:classappend="${item.category == 'Beleza' ? 'human' : 'animal'}"
+                th:classappend="${item.category.toLowerCase().replaceAll(' ', '-')}"
                 th:each="item : ${items}">
                 <div class="pricing-box mt-4">
                     <!-- Display product image -->
@@ -412,6 +412,7 @@
         </div>
         <div class="col-md-6 d-flex align-items-center">
             <form action="/newsletter/subscribe" method="post" class="subscribe-form">
+                <input type="hidden" name="redirectPage" value="sobre" />
                 <div class="form-group d-flex">
                     <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email" required>
                     <button type="submit" class="submit px-3">Inscreva-se</button>
