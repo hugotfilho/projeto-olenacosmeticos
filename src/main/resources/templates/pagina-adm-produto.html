@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Produtos</title>
@@ -13,11 +13,11 @@
 
     <style>
         .custom-navbar {
-          background-color: #FFEE8C; 
-			    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #FFEE8C;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .navbar-light .navbar-nav .nav-link {
-            color: #8B4513 !important; 
+            color: #8B4513 !important;
         }
         .top-header {
             background-color: #FFEE8C;
@@ -28,7 +28,7 @@
             color: #8B4513 !important;
         }
         .custom-navbar {
-            background-color: #FFFFFF; 
+            background-color: #FFFFFF;
         }
         .navbar-light .navbar-brand {
             color: #8B4513 !important;
@@ -45,7 +45,7 @@
             font-weight: bold;
         }
 
-        
+
         .product-table {
             width: 100%;
             border-collapse: collapse;
@@ -67,44 +67,44 @@
             object-fit: cover;
             border-radius: 4px;
         }
-        
-.btn-action {
-    padding: 10px 15px; 
-    font-size: 14px;
-    color: #fff;
-    border-radius: 4px; 
-    margin: 5px; 
-    display: inline-block; 
-    width: 100%; 
-    max-width: 100px; 
-}
 
-.actions {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap; 
-    gap: 10px; 
-}
+        .btn-action {
+            padding: 10px 15px;
+            font-size: 14px;
+            color: #fff;
+            border-radius: 4px;
+            margin: 5px;
+            display: inline-block;
+            width: 100%;
+            max-width: 100px;
+        }
 
-.btn-edit {
-    background-color: #009440;
-    border: none;
-}
+        .actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
 
-.btn-edit:hover {
-    background-color: #45a049;
-}
+        .btn-edit {
+            background-color: #009440;
+            border: none;
+        }
 
-.btn-remove {
-    background-color: #d9534f;
-    border: none;
-}
+        .btn-edit:hover {
+            background-color: #45a049;
+        }
 
-.btn-remove:hover {
-    background-color: #c9302c;
-}
+        .btn-remove {
+            background-color: #d9534f;
+            border: none;
+        }
 
-     
+        .btn-remove:hover {
+            background-color: #c9302c;
+        }
+
+
         .form-section {
             background-color: #f9f9f9;
             padding: 20px;
@@ -128,118 +128,276 @@
         .btn-submit:hover {
             background-color: #45a049;
         }
+
+        /* Estilos para mensagens de erro */
+        .error-message {
+            color: #d9534f;
+            background-color: #f2dede;
+            border: 1px solid #ebccd1;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .success-message {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border: 1px solid #d6e9c6;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .file-info {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light custom-navbar" id="ftco-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img sth:src="@{/images/logo.png}" style="height: 60px; width: auto; margin-right: 10px;">
-                Administração
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-            </button>
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a th:href="@{/admin}" class="nav-link">Início</a></li>
-                    <li class="nav-item"><a th:href="@{/items}" class="nav-link">Gerenciar Produtos</a></li>
-                    <li class="nav-item"><a th:href="@{/dashboard}" class="nav-link">Visualizar Emails</a></li>
-                </ul>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-light custom-navbar" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img sth:src="@{/images/logo.png}" style="height: 60px; width: auto; margin-right: 10px;">
+            Administração
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a th:href="@{/admin}" class="nav-link">Início</a></li>
+                <li class="nav-item"><a th:href="@{/items}" class="nav-link">Gerenciar Produtos</a></li>
+                <li class="nav-item"><a th:href="@{/dashboard}" class="nav-link">Visualizar Emails</a></li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- Conteúdo da Página -->
-    <div class="container mt-5">
-        <h1>Cadastro de Produtos</h1>
+<!-- Conteúdo da Página -->
+<div class="container mt-5">
+    <h1>Cadastro de Produtos</h1>
 
-        <!-- Tabela de Produtos -->
-        <div class="table-responsive mx-auto" style="max-width: 900px;">
-            <table class="table item-table text-center">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Imagem</th>
-                        <th>Categoria</th>
-                        <th>Descrição</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="item : ${items}">
-                        <td th:text="${item.name}">Item Exemplo</td>
-                        <td>
-                            <img th:src="'data:image/png;base64,' + ${item.imageBase64}" 
-                             alt="Imagem do Item" 
-                             style="max-width: 60px;">
-                        </td>
-                        <td th:text="${item.category}">Categoria Exemplo</td>
-                        <td th:text="${item.description}">Descrição Exemplo</td>
-                        <td class="actions">
-                            <form th:action="@{/remove/{id}(id=${item.id})}" method="post" style="display: inline;">
-                                <button type="submit" class="btn btn-remove btn-action">Remover</button>
-                            </form>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    
-        <!-- Formulário de Cadastro de Novo Item -->
-        <div class="form-section">
-            <h2>Cadastrar Novo Item</h2>
-            <form th:action="@{/items/add}" method="post" enctype="multipart/form-data">
-                <div class="form-group mb-3">
-                    <label for="nome">Nome do Item:</label>
-                    <input type="text" id="nome" name="name" class="form-control" required>
-                </div>
-    
-                <div class="form-group mb-3">
-                    <label for="imagem">Imagem do Item:</label>
-                    <input type="file" id="imagem" name="image" class="form-control" required>
-                </div>
-    
-                <div class="form-group mb-3">
-                    <label for="categoria">Categoria:</label>
-                    <select id="categoria" name="category" class="form-select">
-                        <option value="human">Beleza</option>
-                        <option value="animal">4 Patas</option>
-                    </select>
-                </div>
-    
-                <div class="form-group mb-3">
-                    <label for="descricao">Descrição:</label>
-                    <textarea id="descricao" name="description" rows="4" class="form-control"></textarea>
-                </div>
-    
-                <div class="form-group mb-3">
-                    <label for="pricing">Preço:</label>
-                    <input type="number" id="pricing" name="pricing" class="form-control" required>
-                </div>
-    
-                <button type="submit" class="btn-submit w-100">Cadastrar Item</button>
-            </form>
-        </div>
-        
+    <!-- Tabela de Produtos -->
+    <div class="table-responsive mx-auto" style="max-width: 900px;">
+        <table class="table item-table text-center">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Imagem</th>
+                <th>Categoria</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${items}">
+                <td th:text="${item.name}">Item Exemplo</td>
+                <td>
+                    <img th:src="'data:image/png;base64,' + ${item.imageBase64}"
+                         alt="Imagem do Item"
+                         style="max-width: 60px;">
+                </td>
+                <td th:text="${item.category}">Categoria Exemplo</td>
+                <td th:text="${item.description}">Descrição Exemplo</td>
+                <td class="actions">
+                    <form th:action="@{/remove/{id}(id=${item.id})}" method="post" style="display: inline;">
+                        <button type="submit" class="btn btn-remove btn-action">Remover</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/scrollax.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="js/google-map.js"></script>
-    <script src="js/main.js"></script>
+    <!-- Formulário de Cadastro de Novo Item -->
+    <div class="form-section">
+        <h2>Cadastrar Novo Item</h2>
+
+        <!-- Div para mensagens de erro -->
+        <div id="error-container" style="display: none;">
+            <div class="error-message" id="error-message"></div>
+        </div>
+
+        <form th:action="@{/items/add}" method="post" enctype="multipart/form-data" id="productForm">
+            <div class="form-group mb-3">
+                <label for="nome">Nome do Item:</label>
+                <input type="text" id="nome" name="name" class="form-control" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="imagem">Imagem do Item:</label>
+                <input type="file" id="imagem" name="image" class="form-control"
+                       accept="image/*" required onchange="validateFile(this)">
+                <div class="file-info">
+                    <small>Tamanho máximo: 5MB | Formatos aceitos: JPG, PNG, GIF</small>
+                </div>
+                <div id="file-status" class="file-info"></div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="categoria">Categoria:</label>
+                <select id="categoria" name="category" class="form-select">
+                    <option value="human">Beleza</option>
+                    <option value="animal">4 Patas</option>
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="description" rows="4" class="form-control"></textarea>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="pricing">Preço:</label>
+                <input type="number" id="pricing" name="pricing" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn-submit w-100" id="submitBtn">Cadastrar Item</button>
+        </form>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="js/google-map.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+    // Função para validar arquivo
+    function validateFile(input) {
+        const file = input.files[0];
+        const maxSize = 5 * 1024 * 1024; // 5MB em bytes
+        const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+        const errorContainer = document.getElementById('error-container');
+        const errorMessage = document.getElementById('error-message');
+        const fileStatus = document.getElementById('file-status');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Limpar mensagens anteriores
+        errorContainer.style.display = 'none';
+        fileStatus.innerHTML = '';
+        submitBtn.disabled = false;
+
+        if (!file) {
+            return;
+        }
+
+        // Verificar tipo de arquivo
+        if (!allowedTypes.includes(file.type)) {
+            showError('Tipo de arquivo não permitido. Use apenas JPG, PNG ou GIF.');
+            input.value = '';
+            return;
+        }
+
+        // Verificar tamanho do arquivo
+        if (file.size > maxSize) {
+            const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+            showError(`Arquivo muito grande (${fileSizeMB}MB). O tamanho máximo é 5MB.`);
+            input.value = '';
+            return;
+        }
+
+        // Arquivo válido
+        const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+        fileStatus.innerHTML = `<span style="color: green;">✓ Arquivo válido: ${file.name} (${fileSizeMB}MB)</span>`;
+    }
+
+    // Função para mostrar erro
+    function showError(message) {
+        const errorContainer = document.getElementById('error-container');
+        const errorMessage = document.getElementById('error-message');
+        const submitBtn = document.getElementById('submitBtn');
+
+        errorMessage.textContent = message;
+        errorContainer.style.display = 'block';
+        submitBtn.disabled = true;
+
+        // Rolar para a mensagem de erro
+        errorContainer.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Validação adicional no submit
+    document.getElementById('productForm').addEventListener('submit', function(e) {
+        const fileInput = document.getElementById('imagem');
+        const file = fileInput.files[0];
+
+        if (!file) {
+            e.preventDefault();
+            showError('Por favor, selecione uma imagem.');
+            return;
+        }
+
+        const maxSize = 5 * 1024 * 1024; // 5MB
+        if (file.size > maxSize) {
+            e.preventDefault();
+            showError('Arquivo muito grande. Por favor, selecione uma imagem menor que 5MB.');
+            return;
+        }
+
+        // Mostrar loading no botão
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.textContent = 'Enviando...';
+        submitBtn.disabled = true;
+    });
+
+    // Drag and drop (opcional)
+    const fileInput = document.getElementById('imagem');
+    const formSection = document.querySelector('.form-section');
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        formSection.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+        formSection.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        formSection.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight(e) {
+        formSection.style.backgroundColor = '#e8f5e8';
+    }
+
+    function unhighlight(e) {
+        formSection.style.backgroundColor = '#f9f9f9';
+    }
+
+    formSection.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+
+        if (files.length > 0) {
+            fileInput.files = files;
+            validateFile(fileInput);
+        }
+    }
+</script>
 </body>
 </html>

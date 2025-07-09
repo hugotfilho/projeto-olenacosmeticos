@@ -2,23 +2,13 @@ package com.prod.ib3.services;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-import javax.swing.SortOrder;
-
-import org.hibernate.query.sqm.tree.expression.Compatibility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.prod.ib3.entities.Item;
@@ -30,7 +20,7 @@ import com.prod.ib3.repositories.ItemRepository;
 import com.prod.ib3.repositories.MessageRepository;
 import com.prod.ib3.repositories.NewstellerRepository;
 
-import jakarta.mail.MessageRemovedException;
+
 import jakarta.transaction.Transactional;
 
 @Service
@@ -154,6 +144,7 @@ public class AllService {
     public List<Message> getAllMessages() {
         return messageRepository.findAll();
     }
+}
 
     /*@Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -164,4 +155,4 @@ public class AllService {
 
         return UserModel.build(user);
     }*/
-}
+
