@@ -41,7 +41,9 @@ public class AllService {
     NewstellerRepository newstellerRepository;
 
     @Autowired
-    JavaMailSender mailSender;
+    private JavaMailSender mailSender;
+
+
 
     public List<Item> getAll() {
         return itemRepository.findAll();
